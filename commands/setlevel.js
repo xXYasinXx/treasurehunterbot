@@ -1,12 +1,15 @@
 exports.run = (client, message, args) => {
     if (message.author.id !== client.config.ownerID) return;
 
-    const member = message.mentions.users.first();
+    let member = message.mentions.users.first();
+    if (!member) return message.reply('No user specified');
 
-    const targetkey = `${message.guild.id}-${member.user.id}`;
     const targetlevel = args.slice(1).join(' ')
+    if (!targetlevel) return message.reply('No level specified')
     var parsedtargetlevel = parseInt(`${targetlevel}`)
     
+    const targetkey = `${message.guild.id}-${member.id}`;
+
     client.data.set(targetkey, parsedtargetlevel, "level");
     return message.channel.send(`set ${member} to level ${targetlevel}`)
 }
