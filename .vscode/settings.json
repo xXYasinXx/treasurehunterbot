@@ -1,9 +1,0 @@
-{
-    "sqltools.connections": [
-        {
-            "database": ".\\data\\enmap.sqlite",
-            "dialect": "SQLite",
-            "name": "local sqlite data enmap"
-        }
-    ]
-}
